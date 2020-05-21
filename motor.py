@@ -50,21 +50,21 @@ def motorStop():#Motor stops
 
 
 def fwd():
+    GPIO.output(Motor_A_Pin1, GPIO.HIGH)
+    GPIO.output(Motor_A_Pin2, GPIO.LOW)
     GPIO.output(Motor_B_Pin1, GPIO.HIGH)
     GPIO.output(Motor_B_Pin2, GPIO.LOW)
+    pwm_A.start(100)
+    pwm_A.ChangeDutyCycle(30)
     pwm_B.start(100)
-    pwm_b.ChangeDutyCycle(40)
-
-
-
-if direction == Dir_backward:
-    GPIO.output(Motor_B_Pin1, GPIO.HIGH)
-    GPIO.output(Motor_B_Pin2, GPIO.LOW)
-    pwm_B.start(100)
-    pwm_B.ChangeDutyCycle(speed)
-elif direction == Dir_forward:
+    pwm_B.ChangeDutyCycle(30)
+ 
+def bck():
+    GPIO.output(Motor_A_Pin1, GPIO.LOW)
+    GPIO.output(Motor_A_Pin2, GPIO.HIGH)
     GPIO.output(Motor_B_Pin1, GPIO.LOW)
     GPIO.output(Motor_B_Pin2, GPIO.HIGH)
-    pwm_B.start(0)
-    pwm_B.ChangeDutyCycle(speed)
-
+    pwm_A.start(100)
+    pwm_A.ChangeDutyCycle(30)
+    pwm_B.start(100)
+    pwm_B.ChangeDutyCycle(30)

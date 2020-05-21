@@ -34,8 +34,14 @@ def control():
         if char == 'w':
             motor.fwd()
             time.sleep(0.5)
+            motor.motorStop()
+        if char == 's':
+            motor.bck()
+            time.sleep(0.5)
+            motor.motorStop()
 
-#v1=multiprocessing.Process(target=test_video.stream)
-#v1.start()
+motor.setup()
+v1=multiprocessing.Process(target=camera.video)
+v1.start()
 c1 = multiprocessing.Process(target = control)
 c1.start()
